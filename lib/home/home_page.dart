@@ -9,6 +9,20 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+ThemeData lightTheme = ThemeData(
+  brightness: Brightness.light,
+  primaryColor: Colors.blue,
+  colorScheme:
+      ColorScheme.fromSwatch().copyWith(secondary: Colors.grey.shade400),
+);
+
+ThemeData darkTheme = ThemeData(
+  brightness: Brightness.dark,
+  primaryColor: Colors.amber,
+  buttonTheme: ButtonThemeData(buttonColor: Colors.amber),
+  colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.red),
+);
+
 class _HomePageState extends State<HomePage> {
   final _myController = TextEditingController();
   bool _isTapped = false;
@@ -83,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 100),
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Wrap(
@@ -147,23 +161,14 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 120),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'dark/light',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.black45,
-                  ),
-                ),
-              ),
+              TextButton(child: Text('dark/light'), onPressed: () {}),
               Switch(
                 value: light,
                 onChanged: (state) {
                   setState(
-                    () {},
+                    () {
+                      light = state;
+                    },
                   );
                 },
               ),
